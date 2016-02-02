@@ -1,0 +1,52 @@
+.root{
+-fx-background-color: #090a0c,
+                              linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+                              linear-gradient(#20262b, #191d22),
+                              radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+
+
+}
+
+
+.gra{
+fx-background-color:transparent
+}
+
+.label{
+    -fx-text-fill: #ffe4c4;
+    -fx-font-size: 15; -fx-font-weight: bold;
+}
+.menu .label {
+    -fx-text-fill: black;
+    -fx-font-size: 12;
+    -fx-font-weight: normal;
+}
+
+
+
+.check-box{
+-fx-text-fill: #ffe4c4;
+}
+
+.Button-Image{
+     -fx-image: url('/img/green.png');
+     -fx-image-width:100%;
+     -fx-image-height:auto;
+
+}
+
+.info {
+    -fx-font-size: 15; -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color:
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+    -fx-font-weight: bold;
+}

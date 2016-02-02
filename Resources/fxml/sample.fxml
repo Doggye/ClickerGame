@@ -1,0 +1,173 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER"
+      stylesheets="/css/sample.css" spacing="10">
+
+    <MenuBar style="-fx-background-color: silver; -fx-border-color: black ;-fx-border-width: 0 0 1 0;">
+        <Menu text="Plik" style="-fx-fill: RED;  -fx-border-color: black ;-fx-border-width: 1 1 0 1;">
+
+            <MenuItem text="Opcje" style="-fx-text-fill: black;" onAction="#opcjeMenu"
+            fx:id="menuOpcje"></MenuItem>
+
+            <MenuItem text="Exit" style="-fx-text-fill: black;" fx:id="menuExit" onAction="#opcjeExit"></MenuItem>
+
+        </Menu>
+
+
+    </MenuBar>
+
+    <GridPane
+            alignment="CENTER"
+            gridLinesVisible="false"
+            onKeyPressed="#testKlawiszy"
+            styleClass="gra"
+            hgap="5" vgap="5"
+    >
+
+
+        <ImageView fx:id="img11"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="1"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+        <ImageView fx:id="img12"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="1"
+                   GridPane.halignment="CENTER"
+                   GridPane.rowIndex="1"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+        <ImageView fx:id="img13"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="2"
+                   GridPane.rowIndex="1"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+        <ImageView fx:id="img21"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+        <ImageView fx:id="img22"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="1"
+                   GridPane.halignment="CENTER"
+                   GridPane.rowIndex="2"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+        <ImageView fx:id="img23"
+                   styleClass="Button-Image"
+                   GridPane.columnIndex="2"
+                   GridPane.rowIndex="2"
+                   fitHeight="100"
+                   preserveRatio="true"
+        ></ImageView>
+
+
+        <Button text="Start Game"
+                fx:id="startButton"
+                onAction="#start"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="0"
+                GridPane.halignment="CENTER"
+                GridPane.fillWidth="true"
+        ></Button>
+
+        <Button text="Pause"
+                fx:id="pauseButton"
+                visible="false"
+                onAction="#Pause"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="0"
+                GridPane.halignment="CENTER"
+                GridPane.fillWidth="true"
+        ></Button>
+
+        <Button text="Resume"
+                fx:id="resumeButton"
+                visible="false"
+                onAction="#resume"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="0"
+                GridPane.halignment="CENTER"
+                GridPane.fillWidth="true"
+        ></Button>
+
+        <Button text="Restart"
+                fx:id="restartButton"
+                visible="false"
+                onAction="#restartGame"
+                GridPane.columnIndex="2"
+                GridPane.rowIndex="4"
+                GridPane.halignment="CENTER"
+                GridPane.fillWidth="true"
+                styleClass="dark"
+        ></Button>
+
+
+        <Button text="Restart Game"
+                fx:id="restartButton2"
+                visible="false"
+                onAction="#restartGame"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="0"
+                GridPane.halignment="CENTER"
+                GridPane.fillWidth="true"
+
+        ></Button>
+
+
+        <Label text="${controller.pkt}"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="0"
+               GridPane.halignment="LEFT"
+               styleClass="info"
+        ></Label>
+
+        <Label text="${controller.poziom}"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="2"
+               GridPane.halignment="RIGHT"
+               styleClass="info"
+        ></Label>
+
+        <StackPane GridPane.columnIndex="0"
+                   GridPane.columnSpan="2"
+                   GridPane.rowIndex="4"
+                   minHeight="50"
+                   GridPane.halignment="LEFT"
+                   GridPane.valignment="TOP">
+
+            <Label text="${controller.wynik}"
+                   StackPane.alignment="TOP_LEFT"
+                   styleClass="info"
+
+            ></Label>
+
+            <Button text="Restart rekord"
+                    fx:id="restartRekord"
+                    visible="true"
+                    onAction="#restartRekord"
+                    styleClass="dark"
+                    StackPane.alignment="BOTTOM_LEFT"
+            ></Button>
+
+        </StackPane>
+
+
+    </GridPane>
+
+</VBox>
