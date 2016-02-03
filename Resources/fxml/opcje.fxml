@@ -1,83 +1,83 @@
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
-<GridPane fx:controller="sample.ControllerOpcje" xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" stylesheets="/css/sample.css"
+<GridPane fx:controller="sample.ControllerOpcje" xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT"
+          stylesheets="/css/sample.css"
           fx:id="roota"
 
 >
-        <VBox  alignment="CENTER_LEFT"
-               spacing="10"
-               GridPane.columnSpan="2"
+    <VBox alignment="CENTER_LEFT"
+          spacing="10"
+          GridPane.columnSpan="2"
 
 
-        >
+    >
 
-    <CheckBox text="Music"
-              fx:id="mCheckBoxMusic"
-              selected="true"
-              onAction="#checkBoxMusic"
-              ></CheckBox>
-    <CheckBox text="Sounds"
-              fx:id="mCheckBoxSounds"
-              onAction="#checkBoxSounds"
+        <CheckBox text="Music"
+                  fx:id="mCheckBoxMusic"
+                  selected="true"
+                  onAction="#checkBoxMusic"
+        ></CheckBox>
+        <CheckBox text="Sounds"
+                  fx:id="mCheckBoxSounds"
+                  onAction="#checkBoxSounds"
 
-    ></CheckBox>
-    <CheckBox text="Nieśmiertelność"
-              fx:id="mCheckBoxMortal"
-              selected="false"
-              onAction="#checkBoxMortal"
-
-
-    ></CheckBox>
-            <Separator ></Separator>
-
-            <HBox>
-
-            <Slider fx:id="slide" min="0" max="100" majorTickUnit="25" showTickLabels="true" value="50" showTickMarks="true" snapToTicks="true"  ></Slider>
-            <Text text="${controller.slider1}" style="-fx-fill: #ffe4c4; -fx-font-size:16; -fx-font-weight: bold"></Text>
-            </HBox>
-
-            <HBox>
-
-                <TextField promptText="napisz tu cos" fx:id="pole"></TextField>
-                <Label text="lolo" fx:id="textowe"></Label>
-            </HBox>
-
-            <HBox VBox.vgrow="ALWAYS">
-
-                <Button text="Cancel"
-                        onAction="#Close"
-                        fx:id="close"
-                        GridPane.halignment="LEFT"
-
-                        GridPane.rowIndex="5"
-                        GridPane.columnIndex="0"
-                        onMousePressed="#lol"
-                        onMouseReleased="#lol2"
-
-                ></Button>
-                <Button text="Apply"
-                        disable="true"
-                        onAction="#Apply"
-                        fx:id="apply"
-                        GridPane.halignment="RIGHT"
-                        GridPane.rowIndex="5"
-                        GridPane.columnIndex="2"
-                        onMousePressed="#lol"
-                        onMouseReleased="#lol2"
-
-                ></Button>
-                <Button text="Karoinka" onAction="#karola" ></Button>
+        ></CheckBox>
+        <CheckBox text="Nieśmiertelność"
+                  fx:id="mCheckBoxMortal"
+                  selected="false"
+                  onAction="#checkBoxMortal"
 
 
+        ></CheckBox>
+        <Separator minWidth="180"></Separator>
+        <Label text="Music volume:"></Label>
 
-            </HBox>
+        <HBox spacing="10">
+
+            <Slider fx:id="slide" min="0" max="100" majorTickUnit="25" blockIncrement="10"
+                    showTickMarks="true" snapToTicks="false"></Slider>
+
+            <Text text="${controller.slider1}"
+                  style="-fx-fill: #ffe4c4; -fx-font-size:16; -fx-font-weight: bold"></Text>
+
+        </HBox>
+
+        <HBox>
+
+            <TextField promptText="napisz tu cos" fx:id="pole"></TextField>
+            <Label text="lolo" fx:id="textowe"></Label>
+        </HBox>
+
+        <HBox VBox.vgrow="ALWAYS">
+
+            <Button text="Cancel"
+                    onAction="#Close"
+                    fx:id="close"
+                    GridPane.halignment="LEFT"
+
+                    GridPane.rowIndex="5"
+                    GridPane.columnIndex="0"
+                    onMousePressed="#lol"
+                    onMouseReleased="#lol2"
+
+            ></Button>
+            <Button text="Apply"
+                    disable="true"
+                    onAction="#Apply"
+                    fx:id="apply"
+                    GridPane.halignment="RIGHT"
+                    GridPane.rowIndex="5"
+                    GridPane.columnIndex="2"
+                    onMousePressed="#lol"
+                    onMouseReleased="#lol2"
+
+            ></Button>
+
+        </HBox>
 
 
-
-</VBox>
+    </VBox>
 
 
 </GridPane>

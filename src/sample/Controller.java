@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,7 +28,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -66,7 +64,7 @@ public class Controller {
     static Boolean dzwieki;
     static Boolean muzyka;
     static Boolean niesmiertelnosc;
-
+    static double mVolume = 0.2;
 
     MediaPlayer mMediaPlayer = new MediaPlayer(new Media(getClass().getResource("/audio/lol.m4a").toExternalForm()));
 
@@ -359,10 +357,14 @@ public class Controller {
 
 
     private void stopButtony() {
-        for (ImageView iv : mListaImageViews) {
-            iv.setOnMouseClicked(null);
+        try {
+            for (ImageView iv : mListaImageViews) {
+                iv.setOnMouseClicked(null);
+            }
+            scena.setOnKeyPressed(null);
+        } catch (NullPointerException e) {
+            System.out.println("");
         }
-        scena.setOnKeyPressed(null);
 
     }
 
@@ -396,7 +398,6 @@ public class Controller {
             mTimelineGry.pause();
         }
     }
-
 
 
     private void restart() {
@@ -436,8 +437,9 @@ public class Controller {
     }
 
     private void grajMuzyke() {
-        if (muzyka){
-        mMediaPlayer.play();}
+        if (muzyka) {
+            mMediaPlayer.play();
+        }
     }
 
     public void restartGame(ActionEvent event) {
@@ -455,14 +457,6 @@ public class Controller {
         mCzyGraDalej = true;
     }
 
-/*    public void checkBox(ActionEvent event) {
-        if (muzyka) {
-            mMediaPlayer.setMute(false);
-        } else {
-            mMediaPlayer.setMute(true);
-        }
-
-    }*/
 
     private void zapisPliku(Integer rekordowyWynik) {
 
@@ -490,7 +484,9 @@ public class Controller {
             System.out.println(liczba);
         } catch (IOException e) {
             e.printStackTrace();
-        }catch (ClassNotFoundException e){e.printStackTrace();}
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return liczba;
 
@@ -502,14 +498,14 @@ public class Controller {
         mRekordowyWynik = 0;
         zapisPliku(mRekordowyWynik);
         setWynik(String.format("Najlepszy: %d", mRekordowyWynik));
-        testKlawiszy(event) ;
+        testKlawiszy(event);
 
     }
 
 
     @FXML
     public void initialize() {
-        mMediaPlayer.setVolume(0.2);
+        mMediaPlayer.setVolume(mVolume);
         mRekordowyWynik = odczytPliku();
         setWynik(String.format("Najlepszy: %d", mRekordowyWynik));
         setMuzyka(true);
@@ -530,7 +526,7 @@ public class Controller {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/opcje.fxml"));
         stage1 = new Stage();
-        scena = new Scene(root,300,200);
+        scena = new Scene(root, 300, 250);
         stage1.initModality(Modality.APPLICATION_MODAL);
         stage1.setTitle("Opcje");
         stage1.setScene(scena);
@@ -539,11 +535,11 @@ public class Controller {
         pauza();
     }
 
-    private void  sprawdzOpcje(){
+    private void sprawdzOpcje() {
 
-        System.out.println("dzwieki: "+dzwieki);
-        System.out.println("muzyka: "+muzyka);
-        System.out.println("niesmiertelnosc: "+niesmiertelnosc);
+        System.out.println("dzwieki: " + dzwieki);
+        System.out.println("muzyka: " + muzyka);
+        System.out.println("niesmiertelnosc: " + niesmiertelnosc);
     }
 
 

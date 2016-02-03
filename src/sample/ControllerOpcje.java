@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -11,28 +9,12 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ControllerOpcje {
 
 
-    //////////////////////
-    public static final String SLIDER_TOOLTIP =
-            "A slider ranging from 0 to 100 whose values are bound to the fields to the left.";
-    public static final String LABEL_TOOLTIP  =
-            "Click on me to edit the sliders value.\n" +
-                    "The slider will be updated when you hit the Enter key to commit the edit.\n" +
-                    "If you do not enter a value in the sliders range,\n" +
-                    "then the entered value will be ignored.\n" +
-                    "You can hit the Escape key or move the slider to cancel an edit.";
-    public static final String EDIT_FIELD_TOOLTIP =
-            "Click on me to edit the slider's value,\n" +
-                    "but you will only be able to enter numeric values within the slider range.\n" +
-                    "The slider will be updated as you type\n" +
-                    "and there is no need to commit the edit with an enter key.";
-    ///////////////////////
-
+    static double volume;
     @FXML
     CheckBox mCheckBoxMusic, mCheckBoxSounds, mCheckBoxMortal;
     @FXML
@@ -41,13 +23,15 @@ public class ControllerOpcje {
     Slider slide;
     @FXML
     GridPane roota;
-    @FXML TextField pole;
+    @FXML
+    TextField pole;
     @FXML
     Label textowe;
     StringProperty slider1;
+    double mSlider = 55;
 
-    public ControllerOpcje(){
-        slider1=new SimpleStringProperty();
+    public ControllerOpcje() {
+        slider1 = new SimpleStringProperty();
 
     }
 
@@ -55,33 +39,39 @@ public class ControllerOpcje {
         return slider1.get();
     }
 
-    public StringProperty slider1Property() {
-        return slider1;
-    }
-
     public void setSlider1(String slider1) {
         this.slider1.set(slider1);
     }
 
+    public StringProperty slider1Property() {
+        return slider1;
+    }
+
     @FXML
     public void initialize() {
+
         mCheckBoxMusic.setSelected(Controller.getMuzyka());
         mCheckBoxSounds.setSelected(Controller.getDzwieki());
         mCheckBoxMortal.setSelected(Controller.getNiesmiertelnosc());
         System.out.println("inicjalizacja opcji");
+        slide.setValue(mSlider);
 
-        /////////////////////////////////////////////////////////////////////////
-        // create a slider.
-        // bind a plain text label to the slider value.
-
-        //setSlider1(Math.round(slide.getValue()) + "");
+        setSlider1(String.valueOf((int) slide.getValue()));
         slide.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-                if (newValue == null) {
-                    setSlider1("");
-                    return;
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+                if (newValue == oldValue) {
+                    setSlider1(String.valueOf((int) oldValue));
+                    Controller.mVolume = (double) oldValue / 100;
+                    mSlider = (double) newValue;
+
+                } else {
+                    setSlider1(String.valueOf(newValue.intValue()));
+                    apply.setDisable(false);
+                    Controller.mVolume = (double) newValue / 100;
+                    mSlider = (double) newValue;
                 }
-                setSlider1(Math.round(newValue.intValue()) + "");
+
             }
         });
 
@@ -94,12 +84,12 @@ public class ControllerOpcje {
                 }
                 apply.setDisable(false);
             }
-            });
+        });
 
         pole.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue == null){
+                if (newValue == null) {
                     textowe.setText("");
                     return;
                 }
@@ -124,7 +114,7 @@ public class ControllerOpcje {
 
 
     public void checkBoxMortal(ActionEvent event) {
-       // apply.setDisable(false);
+        // apply.setDisable(false);
 /*        if (Controller.getNiesmiertelnosc()==true){
             Controller.setNiesmiertelnosc(false);
 
@@ -152,13 +142,14 @@ public class ControllerOpcje {
     }
 
     public void lol(Event event) {
-        Button buton1 = (Button)event.getSource();
+        Button buton1 = (Button) event.getSource();
         buton1.setStyle("-fx-background-color: #c3c4c4");
     }
 
     public void lol2(Event event) {
-        Button buton1 = (Button)event.getSource();
-        buton1.setStyle(".button");}
+        Button buton1 = (Button) event.getSource();
+        buton1.setStyle(".button");
+    }
 
     public void Close(ActionEvent event) {
         // get a handle to the stage
@@ -167,17 +158,7 @@ public class ControllerOpcje {
         stage.close();
 
     }
-
-    public void karola(ActionEvent event) {
-        System.out.println("Kocham KArole!");
-    }
-
-
     ///////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 
 }
